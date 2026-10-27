@@ -1,0 +1,699 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "curio",
+  "homepage": "https://curio-ui.vercel.app",
+  "items": [
+    {
+      "name": "curio-base",
+      "type": "registry:lib",
+      "title": "Base",
+      "description": "Design tokens, animations and shared types used by every curio component.",
+      "categories": [
+        "base"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/curio.css",
+          "type": "registry:file",
+          "target": "app/curio.css"
+        },
+        {
+          "path": "registry/curio/lib/types.ts",
+          "type": "registry:lib",
+          "target": "components/curio/lib/types.ts"
+        }
+      ]
+    },
+    {
+      "name": "record-player",
+      "type": "registry:component",
+      "title": "Record player",
+      "description": "Album art as a spinning record; a tonearm swings onto it while music is playing.",
+      "categories": [
+        "music"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/music/record.tsx",
+          "type": "registry:component",
+          "target": "components/curio/music/record.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inline-track",
+      "type": "registry:component",
+      "title": "Inline track",
+      "description": "The current song written into a sentence, with a cover preview on hover.",
+      "categories": [
+        "music"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/music/inline-track.tsx",
+          "type": "registry:component",
+          "target": "components/curio/music/inline-track.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cassette",
+      "type": "registry:component",
+      "title": "Cassette",
+      "description": "A little tape whose reels turn while something is playing.",
+      "categories": [
+        "music"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/music/cassette.tsx",
+          "type": "registry:component",
+          "target": "components/curio/music/cassette.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal-track",
+      "type": "registry:component",
+      "title": "Terminal track",
+      "description": "A command-line readout of the current song with a blinking cursor.",
+      "categories": [
+        "music"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/music/terminal-track.tsx",
+          "type": "registry:component",
+          "target": "components/curio/music/terminal-track.tsx"
+        }
+      ]
+    },
+    {
+      "name": "waveform",
+      "type": "registry:component",
+      "title": "Waveform",
+      "description": "A strip of bars shaped by the song that dance while it plays.",
+      "categories": [
+        "music"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/music/waveform.tsx",
+          "type": "registry:component",
+          "target": "components/curio/music/waveform.tsx"
+        }
+      ]
+    },
+    {
+      "name": "polaroid",
+      "type": "registry:component",
+      "title": "Polaroid",
+      "description": "The album cover pinned like a photo; it straightens up on hover.",
+      "categories": [
+        "music"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/music/polaroid.tsx",
+          "type": "registry:component",
+          "target": "components/curio/music/polaroid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "map-classic",
+      "type": "registry:component",
+      "title": "Classic map",
+      "description": "Soft grey street map with a pulsing pin and a small label. follows light/dark.",
+      "categories": [
+        "maps"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/maps/map-classic.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-classic.tsx"
+        },
+        {
+          "path": "registry/curio/lib/map-tiles.tsx",
+          "type": "registry:lib",
+          "target": "components/curio/lib/map-tiles.tsx"
+        },
+        {
+          "path": "registry/curio/maps/map-pin.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "map-mono",
+      "type": "registry:component",
+      "title": "Mono map",
+      "description": "Black-and-white street map with coordinates and a live local clock.",
+      "categories": [
+        "maps"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/maps/map-mono.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-mono.tsx"
+        },
+        {
+          "path": "registry/curio/lib/map-tiles.tsx",
+          "type": "registry:lib",
+          "target": "components/curio/lib/map-tiles.tsx"
+        },
+        {
+          "path": "registry/curio/maps/map-pin.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "map-satellite",
+      "type": "registry:component",
+      "title": "Satellite map",
+      "description": "Real satellite imagery with crosshairs through the location.",
+      "categories": [
+        "maps"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/maps/map-satellite.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-satellite.tsx"
+        },
+        {
+          "path": "registry/curio/lib/map-tiles.tsx",
+          "type": "registry:lib",
+          "target": "components/curio/lib/map-tiles.tsx"
+        },
+        {
+          "path": "registry/curio/maps/map-pin.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "map-blueprint",
+      "type": "registry:component",
+      "title": "Blueprint map",
+      "description": "Streets redrawn as a blue technical plan on a grid.",
+      "categories": [
+        "maps"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/maps/map-blueprint.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-blueprint.tsx"
+        },
+        {
+          "path": "registry/curio/lib/map-tiles.tsx",
+          "type": "registry:lib",
+          "target": "components/curio/lib/map-tiles.tsx"
+        },
+        {
+          "path": "registry/curio/maps/map-pin.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "map-zoom",
+      "type": "registry:component",
+      "title": "Zoom map",
+      "description": "Shows the whole region, then dives into the city on hover.",
+      "categories": [
+        "maps"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/maps/map-zoom.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-zoom.tsx"
+        },
+        {
+          "path": "registry/curio/lib/map-tiles.tsx",
+          "type": "registry:lib",
+          "target": "components/curio/lib/map-tiles.tsx"
+        },
+        {
+          "path": "registry/curio/maps/map-pin.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "map-radar",
+      "type": "registry:component",
+      "title": "Radar map",
+      "description": "Dark map with a sweeping scanner and range rings.",
+      "categories": [
+        "maps"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/maps/map-radar.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-radar.tsx"
+        },
+        {
+          "path": "registry/curio/lib/map-tiles.tsx",
+          "type": "registry:lib",
+          "target": "components/curio/lib/map-tiles.tsx"
+        },
+        {
+          "path": "registry/curio/maps/map-pin.tsx",
+          "type": "registry:component",
+          "target": "components/curio/maps/map-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pill-slider",
+      "type": "registry:component",
+      "title": "Pill slider",
+      "description": "A tiny bar that swells on hover, fills as you drag and stretches past the ends.",
+      "categories": [
+        "sliders"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/sliders/pill-slider.tsx",
+          "type": "registry:component",
+          "target": "components/curio/sliders/pill-slider.tsx"
+        },
+        {
+          "path": "registry/curio/lib/slider.ts",
+          "type": "registry:lib",
+          "target": "components/curio/lib/slider.ts"
+        }
+      ]
+    },
+    {
+      "name": "sun-arc-slider",
+      "type": "registry:component",
+      "title": "Sun arc slider",
+      "description": "Drag the sun across the sky; it becomes a moon after dark.",
+      "categories": [
+        "sliders"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/sliders/sun-arc-slider.tsx",
+          "type": "registry:component",
+          "target": "components/curio/sliders/sun-arc-slider.tsx"
+        },
+        {
+          "path": "registry/curio/lib/slider.ts",
+          "type": "registry:lib",
+          "target": "components/curio/lib/slider.ts"
+        }
+      ]
+    },
+    {
+      "name": "knob-slider",
+      "type": "registry:component",
+      "title": "Knob slider",
+      "description": "A small dial you drag, scroll or click to turn.",
+      "categories": [
+        "sliders"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/sliders/knob-slider.tsx",
+          "type": "registry:component",
+          "target": "components/curio/sliders/knob-slider.tsx"
+        },
+        {
+          "path": "registry/curio/lib/slider.ts",
+          "type": "registry:lib",
+          "target": "components/curio/lib/slider.ts"
+        }
+      ]
+    },
+    {
+      "name": "swatch-slider",
+      "type": "registry:component",
+      "title": "Swatch slider",
+      "description": "Tiny squares in each option’s colours that spread apart on hover.",
+      "categories": [
+        "sliders"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/sliders/swatch-slider.tsx",
+          "type": "registry:component",
+          "target": "components/curio/sliders/swatch-slider.tsx"
+        },
+        {
+          "path": "registry/curio/lib/slider.ts",
+          "type": "registry:lib",
+          "target": "components/curio/lib/slider.ts"
+        }
+      ]
+    },
+    {
+      "name": "ruler-slider",
+      "type": "registry:component",
+      "title": "Ruler slider",
+      "description": "Scrub a strip of tick marks under a fixed marker.",
+      "categories": [
+        "sliders"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/sliders/ruler-slider.tsx",
+          "type": "registry:component",
+          "target": "components/curio/sliders/ruler-slider.tsx"
+        },
+        {
+          "path": "registry/curio/lib/slider.ts",
+          "type": "registry:lib",
+          "target": "components/curio/lib/slider.ts"
+        }
+      ]
+    },
+    {
+      "name": "gradient-slider",
+      "type": "registry:component",
+      "title": "Gradient slider",
+      "description": "A thin bar painted with every option’s colour; the thumb shows a label.",
+      "categories": [
+        "sliders"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/sliders/gradient-slider.tsx",
+          "type": "registry:component",
+          "target": "components/curio/sliders/gradient-slider.tsx"
+        },
+        {
+          "path": "registry/curio/lib/slider.ts",
+          "type": "registry:lib",
+          "target": "components/curio/lib/slider.ts"
+        }
+      ]
+    },
+    {
+      "name": "project-timeline",
+      "type": "registry:component",
+      "title": "Project timeline",
+      "description": "Projects grouped by year with a line and a dot per project.",
+      "categories": [
+        "projects"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/projects/project-timeline.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-timeline.tsx"
+        },
+        {
+          "path": "registry/curio/projects/project-parts.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-parts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-sentence",
+      "type": "registry:component",
+      "title": "Project sentence",
+      "description": "Projects written into a sentence; hover a name for a card.",
+      "categories": [
+        "projects"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/projects/project-sentence.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-sentence.tsx"
+        },
+        {
+          "path": "registry/curio/projects/project-parts.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-parts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-hover-preview",
+      "type": "registry:component",
+      "title": "Hover preview",
+      "description": "Plain rows with a screenshot that follows the cursor.",
+      "categories": [
+        "projects"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/projects/project-hover-preview.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-hover-preview.tsx"
+        },
+        {
+          "path": "registry/curio/projects/project-parts.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-parts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-accordion",
+      "type": "registry:component",
+      "title": "Project accordion",
+      "description": "Names only; open one for details, tags and a preview.",
+      "categories": [
+        "projects"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/projects/project-accordion.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-accordion.tsx"
+        },
+        {
+          "path": "registry/curio/projects/project-parts.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-parts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-tiles",
+      "type": "registry:component",
+      "title": "Project tiles",
+      "description": "Square cards with screenshots.",
+      "categories": [
+        "projects"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/projects/project-tiles.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-tiles.tsx"
+        },
+        {
+          "path": "registry/curio/projects/project-parts.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-parts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-status-rows",
+      "type": "registry:component",
+      "title": "Status rows",
+      "description": "Rows with a live/archived dot and tech tags.",
+      "categories": [
+        "projects"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/projects/project-status-rows.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-status-rows.tsx"
+        },
+        {
+          "path": "registry/curio/projects/project-parts.tsx",
+          "type": "registry:component",
+          "target": "components/curio/projects/project-parts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-cards",
+      "type": "registry:component",
+      "title": "Hover cards",
+      "description": "A row of icons sharing one card that slides and resizes between them.",
+      "categories": [
+        "extras"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/extras/hover-cards.tsx",
+          "type": "registry:component",
+          "target": "components/curio/extras/hover-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "contribution-grid",
+      "type": "registry:component",
+      "title": "Contribution grid",
+      "description": "A github-style activity grid tinted with your accent colour.",
+      "categories": [
+        "extras"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/extras/contribution-grid.tsx",
+          "type": "registry:component",
+          "target": "components/curio/extras/contribution-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pronounce-button",
+      "type": "registry:component",
+      "title": "Pronounce button",
+      "description": "A speaker that plays how your name is said, from a recording or the browser’s voice.",
+      "categories": [
+        "extras"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/extras/pronounce-button.tsx",
+          "type": "registry:component",
+          "target": "components/curio/extras/pronounce-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "theme-toggle",
+      "type": "registry:component",
+      "title": "Theme toggle",
+      "description": "A sun that morphs into a moon; the new theme grows out of the button.",
+      "categories": [
+        "extras"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/extras/theme-toggle.tsx",
+          "type": "registry:component",
+          "target": "components/curio/extras/theme-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "live-clock",
+      "type": "registry:component",
+      "title": "Live clock",
+      "description": "A ticking clock for any time zone.",
+      "categories": [
+        "extras"
+      ],
+      "registryDependencies": [
+        "https://curio-ui.vercel.app/r/curio-base.json"
+      ],
+      "files": [
+        {
+          "path": "registry/curio/extras/live-clock.tsx",
+          "type": "registry:component",
+          "target": "components/curio/extras/live-clock.tsx"
+        }
+      ]
+    }
+  ]
+}

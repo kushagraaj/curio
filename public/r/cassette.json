@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cassette",
+  "type": "registry:component",
+  "title": "Cassette",
+  "description": "A little tape whose reels turn while something is playing.",
+  "categories": [
+    "music"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/music/cassette.tsx",
+      "type": "registry:component",
+      "target": "components/curio/music/cassette.tsx",
+      "content": "import { trackStatus, type Track } from '../lib/types'\r\n\r\nfunction Reel({ spinning }: { spinning: boolean }) {\r\n  return (\r\n    <span\r\n      className=\"curio-spin relative block h-[26px] w-[26px] rounded-full border-[3px]\"\r\n      style={{ borderColor: 'var(--curio-fg)', animationDuration: '2.4s', animationPlayState: spinning ? 'running' : 'paused' }}\r\n    >\r\n      <span className=\"absolute inset-[5px] rounded-full border-2 border-dashed\" style={{ borderColor: 'var(--curio-fg)' }} />\r\n    </span>\r\n  )\r\n}\r\n\r\n// a little tape whose reels turn while something is playing\r\nexport function Cassette({ track: t }: { track: Track }) {\r\n  const spinning = !!t.isPlaying\r\n  return (\r\n    <a href={t.url} target=\"_blank\" rel=\"noopener noreferrer\" className=\"group flex items-center gap-5\">\r\n      <div\r\n        className=\"relative w-[190px] shrink-0 border-2 p-2 transition-transform duration-300 group-hover:-rotate-2\"\r\n        style={{ borderColor: 'var(--curio-fg)', background: 'var(--curio-surface)' }}\r\n      >\r\n        <div className=\"flex items-center gap-2 px-1.5 py-1\" style={{ background: 'var(--curio-accent)', color: 'var(--curio-on-accent)' }}>\r\n          <span className=\"text-[11px]\">A</span>\r\n          <span className=\"truncate text-[11px] font-medium\">{t.title}</span>\r\n        </div>\r\n        <div className=\"mx-auto mt-2 flex w-[120px] items-center justify-between border px-2.5 py-1.5\" style={{ borderColor: 'var(--curio-border)' }}>\r\n          <Reel spinning={spinning} />\r\n          <span className=\"mx-1 h-[10px] flex-1\" style={{ background: 'var(--curio-chip)' }} />\r\n          <Reel spinning={spinning} />\r\n        </div>\r\n        <div className=\"mx-auto mt-2 h-[6px] w-[90px] border-x border-t\" style={{ borderColor: 'var(--curio-border)' }} />\r\n      </div>\r\n      <div className=\"min-w-0\">\r\n        <div className=\"text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n          <span suppressHydrationWarning>{trackStatus(t)}</span>\r\n        </div>\r\n        <div className=\"mt-1 truncate text-[15px] transition-colors group-hover:text-[var(--curio-accent)]\" style={{ color: 'var(--curio-fg)' }}>\r\n          {t.title}\r\n        </div>\r\n        <div className=\"truncate text-[13px]\" style={{ color: 'var(--curio-muted)' }}>\r\n          {t.artist}\r\n        </div>\r\n      </div>\r\n    </a>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

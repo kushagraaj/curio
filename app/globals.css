@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import "../registry/curio/curio.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* the site's own palette. components keep curio's neutral defaults. */
+:root,
+[data-theme="light"] {
+  --site-bg: #fafaf9;
+  --site-fg: #1c1917;
+  --site-muted: #78716c;
+  --site-surface: #ffffff;
+  --site-border: #e7e5e4;
+  --site-chip: #f5f5f4;
+  --site-accent: #166534;
+  --site-on-accent: #ffffff;
+  --site-shelf: #f5f5f4;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --site-bg: #0c0a09;
+  --site-fg: #fafaf9;
+  --site-muted: #a8a29e;
+  --site-surface: #1c1917;
+  --site-border: #292524;
+  --site-chip: #292524;
+  --site-accent: #4ade80;
+  --site-on-accent: #052e16;
+  --site-shelf: #1c1917;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--site-bg);
+  color: var(--site-fg);
+}
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: var(--site-accent);
+  color: var(--site-on-accent);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* shiki: show the matching colours for the current theme */
+.code-block pre {
+  background: transparent !important;
+  overflow-x: auto;
+  padding: 1rem 1.1rem;
+  font-size: 12.5px;
+  line-height: 1.65;
+}
+.code-block code {
+  font-family: var(--font-mono);
+}
+[data-theme="dark"] .code-block .shiki,
+[data-theme="dark"] .code-block .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
+.prose-docs p:not(:where(.not-prose *)) { margin: 0 0 1em; line-height: 1.7; }
+.prose-docs h2 { font-family: var(--font-serif); font-size: 28px; line-height: 1.1; margin: 2.2em 0 0.6em; }
+.prose-docs h3 { font-size: 15px; font-weight: 600; margin: 1.8em 0 0.5em; }
+.prose-docs a:not(:where(.not-prose, .not-prose *)) { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--site-accent); }
+.prose-docs ul:not(:where(.not-prose *)) { list-style: square; padding-left: 1.2em; margin: 0 0 1em; }
+.prose-docs li { margin: 0.3em 0; line-height: 1.6; }
+.prose-docs li::marker { color: var(--site-accent); }
+.prose-docs code:not(pre code):not(:where(.not-prose *)) {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--site-chip);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}

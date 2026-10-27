@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contribution-grid",
+  "type": "registry:component",
+  "title": "Contribution grid",
+  "description": "A github-style activity grid tinted with your accent colour.",
+  "categories": [
+    "extras"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/extras/contribution-grid.tsx",
+      "type": "registry:component",
+      "target": "components/curio/extras/contribution-grid.tsx",
+      "content": "// github-style activity grid. weeks[w][d] = level 0..4, or -1 for \"no day\"\r\n// colours are mixed from --curio-accent so it follows your theme.\r\n\r\nconst level = (l: number) =>\r\n  l < 0\r\n    ? 'transparent'\r\n    : l === 0\r\n      ? 'color-mix(in srgb, var(--curio-fg) 8%, transparent)'\r\n      : l === 4\r\n        ? 'var(--curio-accent)'\r\n        : `color-mix(in srgb, var(--curio-accent) ${[0, 28, 52, 76][l]}%, var(--curio-bg))`\r\n\r\nexport function ContributionGrid({\r\n  weeks,\r\n  total,\r\n  title,\r\n  href,\r\n  cell = 11,\r\n}: {\r\n  weeks: number[][]\r\n  total?: number\r\n  title?: string\r\n  href?: string\r\n  cell?: number\r\n}) {\r\n  return (\r\n    <a href={href} target=\"_blank\" rel=\"noopener noreferrer\" className=\"block w-fit p-3.5\" style={{ color: 'var(--curio-fg)' }}>\r\n      {(title || total !== undefined) && (\r\n        <div className=\"mb-3 flex items-baseline justify-between gap-6 text-[13px]\">\r\n          <span className=\"font-medium\">{title}</span>\r\n          {total !== undefined && (\r\n            <span className=\"text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n              {total.toLocaleString()} contributions\r\n            </span>\r\n          )}\r\n        </div>\r\n      )}\r\n      <div className=\"flex gap-[3px]\">\r\n        {weeks.map((week, w) => (\r\n          <div key={w} className=\"flex flex-col gap-[3px]\">\r\n            {week.map((l, d) => (\r\n              <span key={d} className=\"block\" style={{ width: cell, height: cell, background: level(l) }} />\r\n            ))}\r\n          </div>\r\n        ))}\r\n      </div>\r\n      <div className=\"mt-2.5 flex items-center justify-end gap-[3px] text-[11px]\" style={{ color: 'var(--curio-muted)' }}>\r\n        Less\r\n        {[0, 1, 2, 3, 4].map((l) => (\r\n          <span key={l} className=\"block h-[8px] w-[8px]\" style={{ background: level(l) }} />\r\n        ))}\r\n        More\r\n      </div>\r\n    </a>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

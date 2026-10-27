@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inline-track",
+  "type": "registry:component",
+  "title": "Inline track",
+  "description": "The current song written into a sentence, with a cover preview on hover.",
+  "categories": [
+    "music"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/music/inline-track.tsx",
+      "type": "registry:component",
+      "target": "components/curio/music/inline-track.tsx",
+      "content": "import { timeAgo, type Track } from '../lib/types'\r\n\r\n// reads like part of a sentence; hover the chip to see the cover\r\nexport function InlineTrack({ track: t }: { track: Track }) {\r\n  return (\r\n    <p className=\"text-[15px] leading-[1.7]\" style={{ color: 'var(--curio-fg)' }}>\r\n      {t.isPlaying ? 'Right now I’m listening to' : 'The last thing I listened to was'}{' '}\r\n      <a href={t.url} target=\"_blank\" rel=\"noopener noreferrer\" className=\"curio-chip group relative\">\r\n        {t.art ? (\r\n          // eslint-disable-next-line @next/next/no-img-element\r\n          <img src={t.art} alt=\"\" width={14} height={14} className=\"h-3.5 w-3.5 object-cover\" />\r\n        ) : null}\r\n        {t.title}\r\n        <span\r\n          className=\"pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-20 w-[180px] -translate-x-1/2 translate-y-1 rounded-lg border p-2 opacity-0 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.3)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100\"\r\n          style={{ background: 'var(--curio-surface)', borderColor: 'var(--curio-border)', color: 'var(--curio-fg)', whiteSpace: 'normal' }}\r\n        >\r\n          {t.art ? (\r\n            // eslint-disable-next-line @next/next/no-img-element\r\n            <img src={t.art} alt=\"\" className=\"block aspect-square w-full object-cover\" />\r\n          ) : (\r\n            <span className=\"block aspect-square w-full\" style={{ background: 'var(--curio-chip)' }} />\r\n          )}\r\n          <span className=\"mt-2 block truncate text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n            {t.album || t.artist}\r\n          </span>\r\n        </span>\r\n      </a>{' '}\r\n      by <span className=\"whitespace-nowrap\">{t.artist}</span>\r\n      <span suppressHydrationWarning className=\"ml-2 text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n        {t.isPlaying ? '● Live' : t.playedAt ? timeAgo(t.playedAt) : ''}\r\n      </span>\r\n    </p>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

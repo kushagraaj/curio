@@ -1,0 +1,56 @@
+# curio
+
+> Small, delightful React components for personal sites: music players, maps, theme sliders, project layouts and more. Built with React + Tailwind CSS v4, with a neutral default look themed through --curio-* CSS variables.
+
+Install any component with the shadcn CLI:
+npx shadcn@latest add https://curio-ui.vercel.app/r/<name>.json
+
+After the first install, import the tokens once in your global CSS: @import "./curio.css";
+
+## Base
+
+- [Base](https://curio-ui.vercel.app/docs/curio-base): Design tokens, animations and shared types used by every curio component. Install: https://curio-ui.vercel.app/r/curio-base.json
+
+## Music
+
+- [Record player](https://curio-ui.vercel.app/docs/record-player): Album art as a spinning record; a tonearm swings onto it while music is playing. Install: https://curio-ui.vercel.app/r/record-player.json
+- [Inline track](https://curio-ui.vercel.app/docs/inline-track): The current song written into a sentence, with a cover preview on hover. Install: https://curio-ui.vercel.app/r/inline-track.json
+- [Cassette](https://curio-ui.vercel.app/docs/cassette): A little tape whose reels turn while something is playing. Install: https://curio-ui.vercel.app/r/cassette.json
+- [Terminal track](https://curio-ui.vercel.app/docs/terminal-track): A command-line readout of the current song with a blinking cursor. Install: https://curio-ui.vercel.app/r/terminal-track.json
+- [Waveform](https://curio-ui.vercel.app/docs/waveform): A strip of bars shaped by the song that dance while it plays. Install: https://curio-ui.vercel.app/r/waveform.json
+- [Polaroid](https://curio-ui.vercel.app/docs/polaroid): The album cover pinned like a photo; it straightens up on hover. Install: https://curio-ui.vercel.app/r/polaroid.json
+
+## Maps
+
+- [Classic map](https://curio-ui.vercel.app/docs/map-classic): Soft grey street map with a pulsing pin and a small label. follows light/dark. Install: https://curio-ui.vercel.app/r/map-classic.json
+- [Mono map](https://curio-ui.vercel.app/docs/map-mono): Black-and-white street map with coordinates and a live local clock. Install: https://curio-ui.vercel.app/r/map-mono.json
+- [Satellite map](https://curio-ui.vercel.app/docs/map-satellite): Real satellite imagery with crosshairs through the location. Install: https://curio-ui.vercel.app/r/map-satellite.json
+- [Blueprint map](https://curio-ui.vercel.app/docs/map-blueprint): Streets redrawn as a blue technical plan on a grid. Install: https://curio-ui.vercel.app/r/map-blueprint.json
+- [Zoom map](https://curio-ui.vercel.app/docs/map-zoom): Shows the whole region, then dives into the city on hover. Install: https://curio-ui.vercel.app/r/map-zoom.json
+- [Radar map](https://curio-ui.vercel.app/docs/map-radar): Dark map with a sweeping scanner and range rings. Install: https://curio-ui.vercel.app/r/map-radar.json
+
+## Sliders
+
+- [Pill slider](https://curio-ui.vercel.app/docs/pill-slider): A tiny bar that swells on hover, fills as you drag and stretches past the ends. Install: https://curio-ui.vercel.app/r/pill-slider.json
+- [Sun arc slider](https://curio-ui.vercel.app/docs/sun-arc-slider): Drag the sun across the sky; it becomes a moon after dark. Install: https://curio-ui.vercel.app/r/sun-arc-slider.json
+- [Knob slider](https://curio-ui.vercel.app/docs/knob-slider): A small dial you drag, scroll or click to turn. Install: https://curio-ui.vercel.app/r/knob-slider.json
+- [Swatch slider](https://curio-ui.vercel.app/docs/swatch-slider): Tiny squares in each option’s colours that spread apart on hover. Install: https://curio-ui.vercel.app/r/swatch-slider.json
+- [Ruler slider](https://curio-ui.vercel.app/docs/ruler-slider): Scrub a strip of tick marks under a fixed marker. Install: https://curio-ui.vercel.app/r/ruler-slider.json
+- [Gradient slider](https://curio-ui.vercel.app/docs/gradient-slider): A thin bar painted with every option’s colour; the thumb shows a label. Install: https://curio-ui.vercel.app/r/gradient-slider.json
+
+## Projects
+
+- [Project timeline](https://curio-ui.vercel.app/docs/project-timeline): Projects grouped by year with a line and a dot per project. Install: https://curio-ui.vercel.app/r/project-timeline.json
+- [Project sentence](https://curio-ui.vercel.app/docs/project-sentence): Projects written into a sentence; hover a name for a card. Install: https://curio-ui.vercel.app/r/project-sentence.json
+- [Hover preview](https://curio-ui.vercel.app/docs/project-hover-preview): Plain rows with a screenshot that follows the cursor. Install: https://curio-ui.vercel.app/r/project-hover-preview.json
+- [Project accordion](https://curio-ui.vercel.app/docs/project-accordion): Names only; open one for details, tags and a preview. Install: https://curio-ui.vercel.app/r/project-accordion.json
+- [Project tiles](https://curio-ui.vercel.app/docs/project-tiles): Square cards with screenshots. Install: https://curio-ui.vercel.app/r/project-tiles.json
+- [Status rows](https://curio-ui.vercel.app/docs/project-status-rows): Rows with a live/archived dot and tech tags. Install: https://curio-ui.vercel.app/r/project-status-rows.json
+
+## Extras
+
+- [Hover cards](https://curio-ui.vercel.app/docs/hover-cards): A row of icons sharing one card that slides and resizes between them. Install: https://curio-ui.vercel.app/r/hover-cards.json
+- [Contribution grid](https://curio-ui.vercel.app/docs/contribution-grid): A github-style activity grid tinted with your accent colour. Install: https://curio-ui.vercel.app/r/contribution-grid.json
+- [Pronounce button](https://curio-ui.vercel.app/docs/pronounce-button): A speaker that plays how your name is said, from a recording or the browser’s voice. Install: https://curio-ui.vercel.app/r/pronounce-button.json
+- [Theme toggle](https://curio-ui.vercel.app/docs/theme-toggle): A sun that morphs into a moon; the new theme grows out of the button. Install: https://curio-ui.vercel.app/r/theme-toggle.json
+- [Live clock](https://curio-ui.vercel.app/docs/live-clock): A ticking clock for any time zone. Install: https://curio-ui.vercel.app/r/live-clock.json

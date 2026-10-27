@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-slider",
+  "type": "registry:component",
+  "title": "Gradient slider",
+  "description": "A thin bar painted with every option’s colour; the thumb shows a label.",
+  "categories": [
+    "sliders"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/sliders/gradient-slider.tsx",
+      "type": "registry:component",
+      "target": "components/curio/sliders/gradient-slider.tsx",
+      "content": "'use client'\r\n\r\nimport { useState } from 'react'\r\nimport { sliderAria, sliderKeys, useTrackDrag, type SliderProps } from '../lib/slider'\r\n\r\n// a thin bar painted with every option's colour; the thumb shows a label\r\nexport function GradientSlider(props: SliderProps & { width?: number }) {\r\n  const { options, value, onChange, width = 120 } = props\r\n  const count = options.length\r\n  const { ref, dragging, handlers } = useTrackDrag(width, count, onChange)\r\n  const [hover, setHover] = useState(false)\r\n  const stops = options.map((o, i) => `${o.swatch ?? 'var(--curio-chip)'} ${(i / (count - 1)) * 100}%`).join(', ')\r\n  const left = `${(value / (count - 1)) * 100}%`\r\n  const ease = 'cubic-bezier(.23,1,.32,1)'\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      {...sliderAria(props)}\r\n      onKeyDown={sliderKeys(value, count, onChange)}\r\n      {...handlers}\r\n      onPointerEnter={() => setHover(true)}\r\n      onPointerLeave={() => setHover(false)}\r\n      className=\"relative flex h-8 cursor-pointer touch-none select-none items-center outline-none\"\r\n      style={{ width }}\r\n    >\r\n      <div className=\"h-[6px] w-full rounded-full border\" style={{ background: `linear-gradient(90deg, ${stops})`, borderColor: 'var(--curio-border)' }} />\r\n      <span\r\n        className=\"absolute top-1/2 h-[14px] w-[14px] rounded-full border-2 shadow-[0_2px_6px_rgba(0,0,0,0.2)]\"\r\n        style={{\r\n          left,\r\n          background: options[value]?.swatch ?? 'var(--curio-surface)',\r\n          borderColor: 'var(--curio-accent)',\r\n          transform: `translate(-50%, -50%) scale(${dragging ? 1.25 : 1})`,\r\n          transition: `left 280ms ${ease}, transform 200ms`,\r\n        }}\r\n      />\r\n      <span\r\n        className=\"pointer-events-none absolute -top-5 -translate-x-1/2 px-1.5 py-0.5 text-[11px]\"\r\n        style={{\r\n          left,\r\n          background: 'var(--curio-fg)',\r\n          color: 'var(--curio-bg)',\r\n          opacity: dragging || hover ? 1 : 0,\r\n          transition: `left 280ms ${ease}, opacity 150ms`,\r\n        }}\r\n      >\r\n        {options[value]?.label}\r\n      </span>\r\n    </div>\r\n  )\r\n}\r\n"
+    },
+    {
+      "path": "registry/curio/lib/slider.ts",
+      "type": "registry:lib",
+      "target": "components/curio/lib/slider.ts",
+      "content": "'use client'\r\n\r\nimport { useRef, useState } from 'react'\r\nimport type { ThemeOption } from './types'\r\n\r\nexport type SliderProps = {\r\n  options: ThemeOption[]\r\n  value: number\r\n  onChange: (index: number) => void\r\n  /** accessible name */\r\n  label?: string\r\n}\r\n\r\nexport const clampTo = (n: number, count: number) => Math.max(0, Math.min(count - 1, n))\r\n\r\n// arrow keys / home / end\r\nexport function sliderKeys(value: number, count: number, onChange: (i: number) => void) {\r\n  return (e: React.KeyboardEvent) => {\r\n    const next =\r\n      e.key === 'ArrowRight' || e.key === 'ArrowUp'\r\n        ? value + 1\r\n        : e.key === 'ArrowLeft' || e.key === 'ArrowDown'\r\n          ? value - 1\r\n          : e.key === 'Home'\r\n            ? 0\r\n            : e.key === 'End'\r\n              ? count - 1\r\n              : null\r\n    if (next === null) return\r\n    e.preventDefault()\r\n    onChange(clampTo(next, count))\r\n  }\r\n}\r\n\r\nexport function sliderAria({ options, value, label = 'Theme' }: SliderProps) {\r\n  return {\r\n    role: 'slider' as const,\r\n    tabIndex: 0,\r\n    'aria-label': label,\r\n    'aria-valuemin': 0,\r\n    'aria-valuemax': options.length - 1,\r\n    'aria-valuenow': value,\r\n    'aria-valuetext': options[value]?.label,\r\n  }\r\n}\r\n\r\n// drag along x; reports the nearest step and how far past either end you pulled\r\nexport function useTrackDrag(width: number, count: number, onStep: (i: number) => void) {\r\n  const ref = useRef<HTMLDivElement>(null)\r\n  const [dragging, setDragging] = useState(false)\r\n  const [overshoot, setOvershoot] = useState(0)\r\n\r\n  const update = (clientX: number) => {\r\n    const rect = ref.current!.getBoundingClientRect()\r\n    const x = clientX - rect.left\r\n    setOvershoot(x < 0 ? x : x > width ? x - width : 0)\r\n    onStep(clampTo(Math.round((x / width) * (count - 1)), count))\r\n  }\r\n  const stop = () => {\r\n    setDragging(false)\r\n    setOvershoot(0)\r\n  }\r\n  return {\r\n    ref,\r\n    dragging,\r\n    overshoot,\r\n    handlers: {\r\n      onPointerDown: (e: React.PointerEvent) => {\r\n        ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)\r\n        setDragging(true)\r\n        update(e.clientX)\r\n      },\r\n      onPointerMove: (e: React.PointerEvent) => dragging && update(e.clientX),\r\n      onPointerUp: stop,\r\n      onPointerCancel: stop,\r\n    },\r\n  }\r\n}\r\n"
+    }
+  ]
+}

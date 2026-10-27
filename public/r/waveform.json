@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "waveform",
+  "type": "registry:component",
+  "title": "Waveform",
+  "description": "A strip of bars shaped by the song that dance while it plays.",
+  "categories": [
+    "music"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/music/waveform.tsx",
+      "type": "registry:component",
+      "target": "components/curio/music/waveform.tsx",
+      "content": "'use client'\r\n\r\nimport { useState } from 'react'\r\nimport { trackStatus, type Track } from '../lib/types'\r\n\r\n// bar heights are derived from the title so the same song always has the same shape\r\nfunction bars(seedText: string, count: number) {\r\n  let seed = 0\r\n  for (const c of seedText) seed = (seed * 31 + c.charCodeAt(0)) >>> 0\r\n  return Array.from({ length: count }, (_, i) => {\r\n    seed = (seed * 1103515245 + 12345) >>> 0\r\n    const envelope = Math.sin((i / (count - 1)) * Math.PI) * 0.6 + 0.4\r\n    return Math.round((0.18 + ((seed % 1000) / 1000) * 0.82 * envelope) * 1000) / 10\r\n  })\r\n}\r\n\r\nexport function Waveform({ track: t, bars: count = 56 }: { track: Track; bars?: number }) {\r\n  const [hover, setHover] = useState(false)\r\n  const heights = bars(t.title + t.artist, count)\r\n  return (\r\n    <a\r\n      href={t.url}\r\n      target=\"_blank\"\r\n      rel=\"noopener noreferrer\"\r\n      onPointerEnter={() => setHover(true)}\r\n      onPointerLeave={() => setHover(false)}\r\n      className=\"block border-y py-3\"\r\n      style={{ borderColor: 'var(--curio-border)' }}\r\n    >\r\n      <div className=\"flex items-center gap-3\">\r\n        {t.art ? (\r\n          // eslint-disable-next-line @next/next/no-img-element\r\n          <img src={t.art} alt=\"\" width={40} height={40} className=\"h-10 w-10 shrink-0 object-cover\" />\r\n        ) : (\r\n          <span className=\"h-10 w-10 shrink-0\" style={{ background: 'var(--curio-chip)' }} />\r\n        )}\r\n        <div className=\"min-w-0 flex-1\">\r\n          <div className=\"truncate text-[15px] transition-colors\" style={{ color: hover ? 'var(--curio-accent)' : 'var(--curio-fg)' }}>\r\n            {t.title}\r\n          </div>\r\n          <div className=\"truncate text-[13px]\" style={{ color: 'var(--curio-muted)' }}>\r\n            {t.artist}\r\n          </div>\r\n        </div>\r\n        <span className=\"shrink-0 text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n          <span suppressHydrationWarning>{trackStatus(t)}</span>\r\n        </span>\r\n      </div>\r\n      <div className=\"mt-3 flex h-[34px] items-center gap-[3px]\">\r\n        {heights.map((h, i) => (\r\n          <span\r\n            key={i}\r\n            className=\"curio-wave-bar flex-1 transition-colors duration-300\"\r\n            style={{\r\n              height: `${h}%`,\r\n              background: hover ? 'var(--curio-accent)' : 'color-mix(in srgb, var(--curio-fg) 18%, transparent)',\r\n              animationDelay: `${(i % 9) * -0.13}s`,\r\n              animationPlayState: t.isPlaying || hover ? 'running' : 'paused',\r\n            }}\r\n          />\r\n        ))}\r\n      </div>\r\n    </a>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-toggle",
+  "type": "registry:component",
+  "title": "Theme toggle",
+  "description": "A sun that morphs into a moon; the new theme grows out of the button.",
+  "categories": [
+    "extras"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/extras/theme-toggle.tsx",
+      "type": "registry:component",
+      "target": "components/curio/extras/theme-toggle.tsx",
+      "content": "'use client'\r\n\r\nimport { useId } from 'react'\r\nimport { flushSync } from 'react-dom'\r\n\r\nconst EASE = 'cubic-bezier(.23,1,.32,1)'\r\n\r\n// sun that morphs into a moon. with `reveal`, the new theme grows out of the\r\n// button as a circle (view transitions api; falls back to an instant switch).\r\nexport function ThemeToggle({ dark, onChange, reveal = true }: { dark: boolean; onChange: (dark: boolean) => void; reveal?: boolean }) {\r\n  const maskId = useId().replace(/:/g, '')\r\n\r\n  function toggle(e: React.MouseEvent<HTMLButtonElement>) {\r\n    const next = !dark\r\n    const apply = () => flushSync(() => onChange(next))\r\n    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches\r\n    if (!reveal || reduced || !document.startViewTransition) return apply()\r\n\r\n    const r = e.currentTarget.getBoundingClientRect()\r\n    const x = r.left + r.width / 2\r\n    const y = r.top + r.height / 2\r\n    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))\r\n    document.startViewTransition(apply).ready.then(() => {\r\n      document.documentElement.animate(\r\n        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },\r\n        { duration: 550, easing: 'cubic-bezier(.65,0,.35,1)', pseudoElement: '::view-transition-new(root)' },\r\n      )\r\n    })\r\n  }\r\n\r\n  return (\r\n    <button\r\n      type=\"button\"\r\n      onClick={toggle}\r\n      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}\r\n      className=\"inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md transition-colors\"\r\n      style={{ background: 'var(--curio-chip)', color: 'var(--curio-fg)' }}\r\n    >\r\n      <svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" aria-hidden=\"true\" className=\"overflow-visible\">\r\n        <mask id={maskId}>\r\n          <rect width=\"24\" height=\"24\" fill=\"white\" />\r\n          <circle r=\"7\" fill=\"black\" style={{ transform: dark ? 'translate(17px, 7px)' : 'translate(30px, -6px)', transition: `transform 400ms ${EASE}` }} />\r\n        </mask>\r\n        <circle cx=\"12\" cy=\"12\" fill=\"currentColor\" mask={`url(#${maskId})`} style={{ r: dark ? 8.5 : 4.5, transition: `r 400ms ${EASE}` } as React.CSSProperties} />\r\n        <g\r\n          stroke=\"currentColor\"\r\n          strokeWidth=\"2\"\r\n          strokeLinecap=\"round\"\r\n          style={{\r\n            opacity: dark ? 0 : 1,\r\n            transform: dark ? 'rotate(-45deg) scale(0.5)' : 'none',\r\n            transformOrigin: '12px 12px',\r\n            transition: `opacity 250ms ease, transform 400ms ${EASE}`,\r\n          }}\r\n        >\r\n          <path d=\"M12 1.5v2M12 20.5v2M1.5 12h2M20.5 12h2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M4.6 19.4 6 18M18 6l1.4-1.4\" />\r\n        </g>\r\n      </svg>\r\n    </button>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

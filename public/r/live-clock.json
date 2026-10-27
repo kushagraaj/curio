@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "live-clock",
+  "type": "registry:component",
+  "title": "Live clock",
+  "description": "A ticking clock for any time zone.",
+  "categories": [
+    "extras"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/extras/live-clock.tsx",
+      "type": "registry:component",
+      "target": "components/curio/extras/live-clock.tsx",
+      "content": "'use client'\r\n\r\nimport { useEffect, useState } from 'react'\r\n\r\n// ticking clock for a place, e.g. \"pune · 21:04:12 ist\"\r\nexport function LiveClock({ timeZone, place, zoneLabel, seconds = true }: { timeZone: string; place?: string; zoneLabel?: string; seconds?: boolean }) {\r\n  const [time, setTime] = useState<string | null>(null)\r\n\r\n  useEffect(() => {\r\n    const fmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: seconds ? '2-digit' : undefined, timeZone })\r\n    const tick = () => setTime(fmt.format(new Date()))\r\n    tick()\r\n    const id = window.setInterval(tick, 1000)\r\n    return () => window.clearInterval(id)\r\n  }, [timeZone, seconds])\r\n\r\n  return (\r\n    <span className=\"text-xs tabular-nums\" style={{ color: 'var(--curio-muted)' }}>\r\n      {place && <>{place} · </>}\r\n      <span style={{ color: 'var(--curio-fg)' }}>{time ?? (seconds ? '--:--:--' : '--:--')}</span>\r\n      {zoneLabel && <> {zoneLabel}</>}\r\n    </span>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

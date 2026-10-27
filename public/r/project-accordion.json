@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "project-accordion",
+  "type": "registry:component",
+  "title": "Project accordion",
+  "description": "Names only; open one for details, tags and a preview.",
+  "categories": [
+    "projects"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/projects/project-accordion.tsx",
+      "type": "registry:component",
+      "target": "components/curio/projects/project-accordion.tsx",
+      "content": "'use client'\r\n\r\nimport { useState } from 'react'\r\nimport type { Project } from '../lib/types'\r\nimport { Arrow, external, ProjectTags, ProjectThumb } from './project-parts'\r\n\r\n// names only; open one to see the details, tags and a preview\r\nexport function ProjectAccordion({ items, defaultOpen = 0 }: { items: Project[]; defaultOpen?: number | null }) {\r\n  const [open, setOpen] = useState<number | null>(defaultOpen)\r\n  return (\r\n    <div className=\"border-t\" style={{ borderColor: 'var(--curio-border)' }}>\r\n      {items.map((p, i) => {\r\n        const isOpen = open === i\r\n        return (\r\n          <div key={p.name} className=\"border-b\" style={{ borderColor: 'var(--curio-border)' }}>\r\n            <button\r\n              type=\"button\"\r\n              onClick={() => setOpen(isOpen ? null : i)}\r\n              aria-expanded={isOpen}\r\n              className=\"flex w-full cursor-pointer items-center gap-3 py-3 text-left text-[15px] transition-colors hover:text-[var(--curio-accent)]\"\r\n              style={{ color: 'var(--curio-fg)' }}\r\n            >\r\n              <span className=\"text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n                {p.year}\r\n              </span>\r\n              <span>{p.name}</span>\r\n              <span className=\"ml-auto text-base transition-transform duration-300\" style={{ transform: isOpen ? 'rotate(45deg)' : 'none' }}>\r\n                +\r\n              </span>\r\n            </button>\r\n            <div className=\"grid transition-[grid-template-rows] duration-300 ease-out\" style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}>\r\n              <div className=\"overflow-hidden\">\r\n                <div className=\"flex flex-col gap-4 pb-5 sm:flex-row\">\r\n                  <ProjectThumb project={p} className=\"h-[110px] w-full shrink-0 rounded-md border sm:w-[42%]\" />\r\n                  <div className=\"min-w-0\">\r\n                    <p className=\"text-[14px] leading-relaxed\" style={{ color: 'var(--curio-muted)' }}>\r\n                      {p.description}\r\n                    </p>\r\n                    <ProjectTags project={p} className=\"mt-3\" />\r\n                    <a {...external(p)} className=\"curio-chip mt-3 text-xs\">\r\n                      Open <Arrow />\r\n                    </a>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        )\r\n      })}\r\n    </div>\r\n  )\r\n}\r\n"
+    },
+    {
+      "path": "registry/curio/projects/project-parts.tsx",
+      "type": "registry:component",
+      "target": "components/curio/projects/project-parts.tsx",
+      "content": "import type { Project } from '../lib/types'\r\n\r\nexport function ProjectThumb({ project: p, className = '' }: { project: Project; className?: string }) {\r\n  if (p.image) {\r\n    // eslint-disable-next-line @next/next/no-img-element\r\n    return <img src={p.image} alt=\"\" className={`object-cover object-top ${className}`} />\r\n  }\r\n  return (\r\n    <span\r\n      className={`flex items-center justify-center text-[28px] font-medium ${className}`}\r\n      style={{ background: 'var(--curio-accent)', color: 'var(--curio-on-accent)' }}\r\n    >\r\n      {p.name[0]}\r\n    </span>\r\n  )\r\n}\r\n\r\nexport function ProjectTags({ project: p, className = '' }: { project: Project; className?: string }) {\r\n  if (!p.tags?.length) return null\r\n  return (\r\n    <span className={`flex flex-wrap gap-1.5 text-[11px] ${className}`} style={{ color: 'var(--curio-muted)' }}>\r\n      {p.tags.map((t) => (\r\n        <span key={t} className=\"rounded-md border px-1.5 py-px\" style={{ borderColor: 'var(--curio-border)' }}>\r\n          {t}\r\n        </span>\r\n      ))}\r\n    </span>\r\n  )\r\n}\r\n\r\nexport const external = (p: Project) => ({ href: p.url, target: '_blank', rel: 'noopener noreferrer' })\r\n\r\nexport function Arrow() {\r\n  return (\r\n    <svg viewBox=\"0 0 10 10\" width={10} height={10} fill=\"none\" stroke=\"currentColor\" strokeWidth=\"1.4\" aria-hidden=\"true\">\r\n      <path d=\"M2.5 7.5 7.5 2.5M3.5 2.5h4v4\" />\r\n    </svg>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

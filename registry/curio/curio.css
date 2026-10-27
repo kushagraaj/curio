@@ -1,0 +1,76 @@
+/*
+  curio — tokens + animations shared by every component.
+  override any --curio-* variable to match your site.
+  dark values apply under .dark or [data-theme="dark"] on any ancestor.
+*/
+
+:root,
+.light,
+[data-theme="light"] {
+  --curio-bg: #ffffff;
+  --curio-fg: #09090b;
+  --curio-muted: #71717a;
+  --curio-surface: #ffffff;
+  --curio-border: #e4e4e7;
+  --curio-chip: #f4f4f5;
+  --curio-accent: #18181b;
+  --curio-on-accent: #fafafa;
+}
+
+.dark,
+[data-theme="dark"] {
+  --curio-bg: #09090b;
+  --curio-fg: #fafafa;
+  --curio-muted: #a1a1aa;
+  --curio-surface: #18181b;
+  --curio-border: #27272a;
+  --curio-chip: #27272a;
+  --curio-accent: #fafafa;
+  --curio-on-accent: #18181b;
+}
+
+/* map tiles: light by default, dark tiles inside a dark theme */
+.curio-tiles-dark { display: none; }
+:is(.dark, [data-theme="dark"]) .curio-tiles-light { display: none; }
+:is(.dark, [data-theme="dark"]) .curio-tiles-dark { display: block; }
+/* a light section inside a dark page */
+:is(.dark, [data-theme="dark"]) :is(.light, [data-theme="light"]) .curio-tiles-light { display: block; }
+:is(.dark, [data-theme="dark"]) :is(.light, [data-theme="light"]) .curio-tiles-dark { display: none; }
+
+/* inline link chip */
+.curio-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  line-height: 1.2;
+  background: var(--curio-chip);
+  color: var(--curio-fg);
+  white-space: nowrap;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.curio-chip:hover,
+.curio-chip:focus-visible,
+.curio-chip[data-active="true"] {
+  background: var(--curio-accent);
+  color: var(--curio-on-accent);
+  outline: none;
+}
+
+@keyframes curio-spin { to { transform: rotate(360deg); } }
+@keyframes curio-eq { 0%, 100% { height: 3px; } 50% { height: 11px; } }
+@keyframes curio-pulse { 0% { transform: scale(0.4); opacity: 0.5; } 100% { transform: scale(1.6); opacity: 0; } }
+@keyframes curio-blink { 50% { opacity: 0; } }
+@keyframes curio-wave { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.35); } }
+@keyframes curio-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+.curio-spin { animation: curio-spin 6s linear infinite; }
+.curio-eq-bar { width: 2px; height: 3px; background: currentColor; animation: curio-eq 0.9s ease infinite; }
+.curio-pulse { animation: curio-pulse 2.2s ease-out infinite; }
+.curio-blink { animation: curio-blink 1s steps(1) infinite; }
+.curio-wave-bar { transform-origin: center; animation: curio-wave 1.1s ease-in-out infinite; }
+.curio-fade { animation: curio-fade 0.7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .curio-eq-bar, .curio-pulse, .curio-blink, .curio-wave-bar, .curio-fade { animation: none !important; }
+}

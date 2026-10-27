@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+<defs><radialGradient id="g" cx="30%" cy="30%" r="90%"><stop offset="0" stop-color="#ffb36b"/><stop offset=".55" stop-color="#e2542b"/><stop offset="1" stop-color="#5b1a2e"/></radialGradient></defs>
+<rect width="300" height="300" fill="url(#g)"/>
+<circle cx="205" cy="190" r="70" fill="none" stroke="#fff3e0" stroke-width="2" opacity=".7"/>
+<circle cx="205" cy="190" r="44" fill="none" stroke="#fff3e0" stroke-width="2" opacity=".5"/>
+<text x="22" y="270" font-family="Georgia, serif" font-style="italic" font-size="34" fill="#fff3e0">slow tides</text>
+</svg>

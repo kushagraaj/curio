@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "terminal-track",
+  "type": "registry:component",
+  "title": "Terminal track",
+  "description": "A command-line readout of the current song with a blinking cursor.",
+  "categories": [
+    "music"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/music/terminal-track.tsx",
+      "type": "registry:component",
+      "target": "components/curio/music/terminal-track.tsx",
+      "content": "import { trackStatus, type Track } from '../lib/types'\r\n\r\n// a tiny command-line readout with a blinking cursor\r\nexport function TerminalTrack({ track: t, command = 'spotify --now' }: { track: Track; command?: string }) {\r\n  return (\r\n    <a\r\n      href={t.url}\r\n      target=\"_blank\"\r\n      rel=\"noopener noreferrer\"\r\n      className=\"block rounded-lg border p-4 font-mono text-[12.5px] leading-[1.7] transition-colors hover:border-[var(--curio-accent)]\"\r\n      style={{ borderColor: 'var(--curio-border)', background: 'var(--curio-surface)', color: 'var(--curio-fg)' }}\r\n    >\r\n      <div style={{ color: 'var(--curio-muted)' }}>\r\n        <span style={{ color: 'var(--curio-accent)' }}>~</span> $ {command}\r\n      </div>\r\n      <div className=\"truncate\">\r\n        <span style={{ color: 'var(--curio-accent)' }}>{t.isPlaying ? '▶' : '■'}</span> {t.title}\r\n      </div>\r\n      <div className=\"truncate pl-4\" style={{ color: 'var(--curio-muted)' }}>\r\n        {t.artist}\r\n        {t.album ? ` — ${t.album}` : ''}\r\n      </div>\r\n      <div className=\"pl-4\" style={{ color: 'var(--curio-muted)' }}>\r\n        <span suppressHydrationWarning>{trackStatus(t)}</span>\r\n        <span className=\"curio-blink ml-1 inline-block h-[13px] w-[7px] translate-y-[2px]\" style={{ background: 'var(--curio-fg)' }} />\r\n      </div>\r\n    </a>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

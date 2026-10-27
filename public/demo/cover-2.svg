@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+<rect width="300" height="300" fill="#13152b"/>
+<g fill="none" stroke="#7b85ff" stroke-width="2" opacity=".85">
+<path d="M0 210 Q75 150 150 210 T300 210"/><path d="M0 180 Q75 120 150 180 T300 180" opacity=".7"/><path d="M0 150 Q75 90 150 150 T300 150" opacity=".5"/>
+</g>
+<circle cx="225" cy="70" r="26" fill="#e9e6ff"/>
+<text x="22" y="275" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="26" fill="#e9e6ff" letter-spacing="-1">night drive</text>
+</svg>

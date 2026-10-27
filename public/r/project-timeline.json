@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "project-timeline",
+  "type": "registry:component",
+  "title": "Project timeline",
+  "description": "Projects grouped by year with a line and a dot per project.",
+  "categories": [
+    "projects"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/projects/project-timeline.tsx",
+      "type": "registry:component",
+      "target": "components/curio/projects/project-timeline.tsx",
+      "content": "import type { Project } from '../lib/types'\r\nimport { Arrow, external, ProjectTags } from './project-parts'\r\n\r\n// grouped by year with a line and a dot per project, like a changelog\r\nexport function ProjectTimeline({ items }: { items: Project[] }) {\r\n  const years = [...new Set(items.map((p) => p.year))]\r\n  return (\r\n    <div className=\"flex flex-col\">\r\n      {years.map((year) => (\r\n        <div key={year} className=\"grid grid-cols-[48px_1fr] gap-3 sm:grid-cols-[56px_1fr] sm:gap-4\">\r\n          <div className=\"pt-[3px] text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n            {year}\r\n          </div>\r\n          <div className=\"relative border-l pb-6 pl-5\" style={{ borderColor: 'var(--curio-border)' }}>\r\n            {items\r\n              .filter((p) => p.year === year)\r\n              .map((p) => (\r\n                <a key={p.name} {...external(p)} className=\"group relative mb-4 block last:mb-0\">\r\n                  <span\r\n                    className=\"absolute -left-[25px] top-[7px] h-[9px] w-[9px] rounded-full border-2 transition-colors group-hover:bg-[var(--curio-accent)]\"\r\n                    style={{ borderColor: 'var(--curio-accent)', background: 'var(--curio-bg)' }}\r\n                  />\r\n                  <span className=\"flex items-center gap-1.5 text-[15px] transition-colors group-hover:text-[var(--curio-accent)]\" style={{ color: 'var(--curio-fg)' }}>\r\n                    {p.name} <Arrow />\r\n                  </span>\r\n                  <span className=\"mt-0.5 block text-[14px] leading-snug\" style={{ color: 'var(--curio-muted)' }}>\r\n                    {p.description}\r\n                  </span>\r\n                  <ProjectTags project={p} className=\"mt-2\" />\r\n                </a>\r\n              ))}\r\n          </div>\r\n        </div>\r\n      ))}\r\n    </div>\r\n  )\r\n}\r\n"
+    },
+    {
+      "path": "registry/curio/projects/project-parts.tsx",
+      "type": "registry:component",
+      "target": "components/curio/projects/project-parts.tsx",
+      "content": "import type { Project } from '../lib/types'\r\n\r\nexport function ProjectThumb({ project: p, className = '' }: { project: Project; className?: string }) {\r\n  if (p.image) {\r\n    // eslint-disable-next-line @next/next/no-img-element\r\n    return <img src={p.image} alt=\"\" className={`object-cover object-top ${className}`} />\r\n  }\r\n  return (\r\n    <span\r\n      className={`flex items-center justify-center text-[28px] font-medium ${className}`}\r\n      style={{ background: 'var(--curio-accent)', color: 'var(--curio-on-accent)' }}\r\n    >\r\n      {p.name[0]}\r\n    </span>\r\n  )\r\n}\r\n\r\nexport function ProjectTags({ project: p, className = '' }: { project: Project; className?: string }) {\r\n  if (!p.tags?.length) return null\r\n  return (\r\n    <span className={`flex flex-wrap gap-1.5 text-[11px] ${className}`} style={{ color: 'var(--curio-muted)' }}>\r\n      {p.tags.map((t) => (\r\n        <span key={t} className=\"rounded-md border px-1.5 py-px\" style={{ borderColor: 'var(--curio-border)' }}>\r\n          {t}\r\n        </span>\r\n      ))}\r\n    </span>\r\n  )\r\n}\r\n\r\nexport const external = (p: Project) => ({ href: p.url, target: '_blank', rel: 'noopener noreferrer' })\r\n\r\nexport function Arrow() {\r\n  return (\r\n    <svg viewBox=\"0 0 10 10\" width={10} height={10} fill=\"none\" stroke=\"currentColor\" strokeWidth=\"1.4\" aria-hidden=\"true\">\r\n      <path d=\"M2.5 7.5 7.5 2.5M3.5 2.5h4v4\" />\r\n    </svg>\r\n  )\r\n}\r\n"
+    }
+  ]
+}

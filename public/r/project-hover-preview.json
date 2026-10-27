@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "project-hover-preview",
+  "type": "registry:component",
+  "title": "Hover preview",
+  "description": "Plain rows with a screenshot that follows the cursor.",
+  "categories": [
+    "projects"
+  ],
+  "registryDependencies": [
+    "https://curio-ui.vercel.app/r/curio-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/curio/projects/project-hover-preview.tsx",
+      "type": "registry:component",
+      "target": "components/curio/projects/project-hover-preview.tsx",
+      "content": "'use client'\r\n\r\nimport { useState } from 'react'\r\nimport type { Project } from '../lib/types'\r\nimport { external, ProjectThumb } from './project-parts'\r\n\r\n// plain rows; a screenshot follows the cursor while you hover one\r\nexport function ProjectHoverPreview({ items }: { items: Project[] }) {\r\n  const [active, setActive] = useState<Project | null>(null)\r\n  const [pos, setPos] = useState({ x: 0, y: 0 })\r\n\r\n  return (\r\n    <div onPointerMove={(e) => setPos({ x: e.clientX, y: e.clientY })} onPointerLeave={() => setActive(null)}>\r\n      {items.map((p) => (\r\n        <a\r\n          key={p.name}\r\n          {...external(p)}\r\n          onPointerEnter={() => setActive(p)}\r\n          className=\"flex items-baseline gap-3 border-b py-2.5 text-[15px] transition-colors hover:text-[var(--curio-accent)]\"\r\n          style={{ borderColor: 'var(--curio-border)', color: 'var(--curio-fg)' }}\r\n        >\r\n          <span className=\"shrink-0\">{p.name}</span>\r\n          <span className=\"min-w-0 truncate text-[13px]\" style={{ color: 'var(--curio-muted)' }}>\r\n            {p.tags?.join(', ')}\r\n          </span>\r\n          <span className=\"ml-auto shrink-0 text-xs\" style={{ color: 'var(--curio-muted)' }}>\r\n            {p.year}\r\n          </span>\r\n        </a>\r\n      ))}\r\n      <div\r\n        className=\"pointer-events-none fixed z-50 h-[150px] w-[240px] overflow-hidden rounded-lg border shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] transition-[opacity,transform] duration-200\"\r\n        style={{\r\n          left: pos.x + 18,\r\n          top: pos.y + 18,\r\n          opacity: active ? 1 : 0,\r\n          transform: active ? 'scale(1) rotate(-2deg)' : 'scale(0.9) rotate(-2deg)',\r\n          borderColor: 'var(--curio-border)',\r\n          background: 'var(--curio-surface)',\r\n        }}\r\n      >\r\n        {active && <ProjectThumb project={active} className=\"h-full w-full\" />}\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n"
+    },
+    {
+      "path": "registry/curio/projects/project-parts.tsx",
+      "type": "registry:component",
+      "target": "components/curio/projects/project-parts.tsx",
+      "content": "import type { Project } from '../lib/types'\r\n\r\nexport function ProjectThumb({ project: p, className = '' }: { project: Project; className?: string }) {\r\n  if (p.image) {\r\n    // eslint-disable-next-line @next/next/no-img-element\r\n    return <img src={p.image} alt=\"\" className={`object-cover object-top ${className}`} />\r\n  }\r\n  return (\r\n    <span\r\n      className={`flex items-center justify-center text-[28px] font-medium ${className}`}\r\n      style={{ background: 'var(--curio-accent)', color: 'var(--curio-on-accent)' }}\r\n    >\r\n      {p.name[0]}\r\n    </span>\r\n  )\r\n}\r\n\r\nexport function ProjectTags({ project: p, className = '' }: { project: Project; className?: string }) {\r\n  if (!p.tags?.length) return null\r\n  return (\r\n    <span className={`flex flex-wrap gap-1.5 text-[11px] ${className}`} style={{ color: 'var(--curio-muted)' }}>\r\n      {p.tags.map((t) => (\r\n        <span key={t} className=\"rounded-md border px-1.5 py-px\" style={{ borderColor: 'var(--curio-border)' }}>\r\n          {t}\r\n        </span>\r\n      ))}\r\n    </span>\r\n  )\r\n}\r\n\r\nexport const external = (p: Project) => ({ href: p.url, target: '_blank', rel: 'noopener noreferrer' })\r\n\r\nexport function Arrow() {\r\n  return (\r\n    <svg viewBox=\"0 0 10 10\" width={10} height={10} fill=\"none\" stroke=\"currentColor\" strokeWidth=\"1.4\" aria-hidden=\"true\">\r\n      <path d=\"M2.5 7.5 7.5 2.5M3.5 2.5h4v4\" />\r\n    </svg>\r\n  )\r\n}\r\n"
+    }
+  ]
+}
