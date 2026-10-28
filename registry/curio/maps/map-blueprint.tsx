@@ -26,7 +26,7 @@ export function MapBlueprint({ lat, lon, label, href, size = 260, zoom = 13 }: M
       />
       <span className="absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 border-2 border-white bg-[#ff5a2e]" />
       <span className="absolute left-2.5 top-2 z-10 font-mono text-[10px] uppercase tracking-[0.08em] text-white/80">
-        Sheet 01{label ? ` — ${label}` : ''}
+        Sheet 01{label ? ` · ${label}` : ''}
       </span>
       <span className="absolute bottom-2 right-2.5 z-10 font-mono text-[10px] text-white/80">{coords(lat, lon)}</span>
       <Credit text={MAP_CREDIT} light />

@@ -68,7 +68,7 @@ export default async function ComponentPage({ params }: Props) {
                       {p.type}
                     </td>
                     <td className="px-4 py-2.5 font-mono text-[11.5px]" style={{ color: 'var(--site-muted)' }}>
-                      {p.default ?? '—'}
+                      {p.default ?? '-'}
                     </td>
                     <td className="px-4 py-2.5" style={{ color: 'var(--site-muted)' }}>
                       {p.description}

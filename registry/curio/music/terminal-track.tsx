@@ -18,7 +18,7 @@ export function TerminalTrack({ track: t, command = 'spotify --now' }: { track: 
       </div>
       <div className="truncate pl-4" style={{ color: 'var(--curio-muted)' }}>
         {t.artist}
-        {t.album ? ` — ${t.album}` : ''}
+        {t.album ? ` · ${t.album}` : ''}
       </div>
       <div className="pl-4" style={{ color: 'var(--curio-muted)' }}>
         <span suppressHydrationWarning>{trackStatus(t)}</span>

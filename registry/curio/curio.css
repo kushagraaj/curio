@@ -1,5 +1,5 @@
 /*
-  curio — tokens + animations shared by every component.
+  curio: tokens + animations shared by every component.
   override any --curio-* variable to match your site.
   dark values apply under .dark or [data-theme="dark"] on any ancestor.
 */

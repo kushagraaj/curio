@@ -16,7 +16,7 @@ const mapProps: PropDoc[] = [
   { name: 'label', type: 'string', description: 'Shown on the map, e.g. "Lisbon, PT".' },
   { name: 'href', type: 'string', description: 'Where clicking the map goes.' },
   { name: 'size', type: 'number', default: '260', description: 'Square size in px.' },
-  { name: 'zoom', type: 'number', default: '12–13', description: 'Map zoom level.' },
+  { name: 'zoom', type: 'number', default: '12 to 13', description: 'Map zoom level.' },
 ]
 
 const trackUsage = (comp: string, file: string, extra = '') => `import { ${comp} } from '@/components/curio/music/${file}'
@@ -138,7 +138,7 @@ export function Activity({ weeks }: { weeks: number[][] }) {
   return <ContributionGrid weeks={weeks} total={612} title="@you" href="https://github.com/you" />
 }`,
     props: [
-      { name: 'weeks', type: 'number[][]', description: 'Levels 0–4 per day, grouped by week.' },
+      { name: 'weeks', type: 'number[][]', description: 'Levels 0 to 4 per day, grouped by week.' },
       { name: 'total', type: 'number', description: 'Shown top-right.' },
       { name: 'title', type: 'string', description: 'Shown top-left.' },
       { name: 'cell', type: 'number', default: '11', description: 'Cell size in px.' },

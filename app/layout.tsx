@@ -11,7 +11,7 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono'
 const jost = Jost({ subsets: ['latin'], variable: '--font-jost', display: 'swap' })
 
 export const metadata: Metadata = {
-  title: { default: 'Curio — small, delightful components', template: '%s · Curio' },
+  title: { default: 'Curio: small, delightful components', template: '%s · Curio' },
   description: 'A cabinet of small, delightful React components for personal sites: music players, maps, theme sliders, project layouts and more.',
 }
 
