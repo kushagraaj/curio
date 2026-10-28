@@ -6,7 +6,7 @@ import path from 'node:path'
 
 const root = path.resolve(import.meta.dirname, '..')
 const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL
-const origin = (process.env.CURIO_URL || (vercelHost && `https://${vercelHost}`) || 'https://curio-ui.vercel.app').replace(/\/$/, '')
+const origin = (process.env.CURIO_URL || (vercelHost && `https://${vercelHost}`) || 'https://curio-components.vercel.app').replace(/\/$/, '')
 const fill = (s) => s.replaceAll('{{origin}}', origin)
 
 const registry = JSON.parse(fill(fs.readFileSync(path.join(root, 'registry.json'), 'utf8')))

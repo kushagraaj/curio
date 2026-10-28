@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "curio",
-  "homepage": "https://curio-ui.vercel.app",
+  "homepage": "https://curio-components.vercel.app",
   "items": [
     {
       "name": "curio-base",
@@ -33,7 +33,7 @@
         "music"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -52,7 +52,7 @@
         "music"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -71,7 +71,7 @@
         "music"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -90,7 +90,7 @@
         "music"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -109,7 +109,7 @@
         "music"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -128,7 +128,7 @@
         "music"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -147,7 +147,7 @@
         "maps"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -176,7 +176,7 @@
         "maps"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -205,7 +205,7 @@
         "maps"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -234,7 +234,7 @@
         "maps"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -263,7 +263,7 @@
         "maps"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -292,7 +292,7 @@
         "maps"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -321,7 +321,7 @@
         "sliders"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -345,7 +345,7 @@
         "sliders"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -369,7 +369,7 @@
         "sliders"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -393,7 +393,7 @@
         "sliders"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -417,7 +417,7 @@
         "sliders"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -441,7 +441,7 @@
         "sliders"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -465,7 +465,7 @@
         "projects"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -489,7 +489,7 @@
         "projects"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -513,7 +513,7 @@
         "projects"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -537,7 +537,7 @@
         "projects"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -561,7 +561,7 @@
         "projects"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -585,7 +585,7 @@
         "projects"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -609,7 +609,7 @@
         "extras"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -628,7 +628,7 @@
         "extras"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -647,7 +647,7 @@
         "extras"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -666,7 +666,7 @@
         "extras"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {
@@ -685,7 +685,7 @@
         "extras"
       ],
       "registryDependencies": [
-        "https://curio-ui.vercel.app/r/curio-base.json"
+        "https://curio-components.vercel.app/r/curio-base.json"
       ],
       "files": [
         {

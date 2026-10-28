@@ -8,7 +8,7 @@
     "projects"
   ],
   "registryDependencies": [
-    "https://curio-ui.vercel.app/r/curio-base.json"
+    "https://curio-components.vercel.app/r/curio-base.json"
   ],
   "files": [
     {

@@ -32,6 +32,6 @@ export const byCategory = (id: string) => ITEMS.filter((i) => i.category === id)
 export const findItem = (name: string) => ITEMS.find((i) => i.name === name)
 
 const vercelHost = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
-export const SITE_URL = (process.env.NEXT_PUBLIC_CURIO_URL || (vercelHost && `https://${vercelHost}`) || 'https://curio-ui.vercel.app').replace(/\/$/, '')
+export const SITE_URL = (process.env.NEXT_PUBLIC_CURIO_URL || (vercelHost && `https://${vercelHost}`) || 'https://curio-components.vercel.app').replace(/\/$/, '')
 export const installCommand = (name: string) => `npx shadcn@latest add ${SITE_URL}/r/${name}.json`
 export const pad = (n: number) => String(n).padStart(2, '0')

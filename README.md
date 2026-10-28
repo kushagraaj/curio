@@ -5,7 +5,7 @@ a cabinet of small, delightful react components for personal sites: music player
 components aren't imported from a package. each one is copied into your project with the shadcn cli, so the code is yours.
 
 ```bash
-npx shadcn@latest add https://curio-ui.vercel.app/r/record-player.json
+npx shadcn@latest add https://curio-components.vercel.app/r/record-player.json
 ```
 
 then add `@import "./curio.css";` to your global css once.

@@ -89,3 +89,184 @@ body {
   padding: 0.1em 0.35em;
   border-radius: 4px;
 }
+
+/* ---------- landing page ---------- */
+:root,
+[data-theme="light"] {
+  --l-bg: #efefef;
+  --l-surface: #e2e2e2;
+  --l-step: #d6d6d6;
+  --l-ink: #0a0a0a;
+  --l-muted: #555555;
+  --l-accent: #b11226;
+  --l-accent-ink: #ffffff;
+  --l-field: #0a0a0a;
+  --l-field-ink: #efefef;
+  --l-tile: #ffffff;
+  --l-stage: #c9c9c9;
+}
+[data-theme="dark"] {
+  --l-bg: #0a0a0a;
+  --l-surface: #151515;
+  --l-step: #222222;
+  --l-ink: #efefef;
+  --l-muted: #8c8c8c;
+  --l-accent: #b11226;
+  --l-accent-ink: #ffffff;
+  --l-field: #efefef;
+  --l-field-ink: #0a0a0a;
+  --l-tile: #151515;
+  --l-stage: #2a2a2a;
+}
+body:has(.landing) {
+  background: var(--l-bg);
+}
+.landing {
+  --gutter: clamp(16px, 2.2vw, 32px);
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-display: clamp(2.35rem, 0.4rem + 7.6vw, 8rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--l-bg);
+  color: var(--l-ink);
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.landing ::selection {
+  background: var(--l-accent);
+  color: var(--l-accent-ink);
+}
+.l-wrap {
+  padding-inline: var(--gutter);
+}
+.l-display {
+  font-size: var(--step-display);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.l-head {
+  font-size: var(--step-head);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.l-lead {
+  font-size: var(--step-lead);
+  font-weight: 500;
+  line-height: 1.25;
+}
+.l-small {
+  font-size: var(--step-small);
+}
+.l-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 1.4rem;
+  font-weight: 500;
+  background: var(--l-accent);
+  color: var(--l-accent-ink);
+  transition: transform 160ms var(--ease-out), background-color 160ms;
+}
+.l-btn:hover {
+  background: color-mix(in srgb, var(--l-accent) 86%, white);
+}
+.l-btn:active {
+  transform: scale(0.97);
+}
+.l-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  transition: text-underline-offset 160ms var(--ease-out), color 160ms;
+}
+.l-link:hover {
+  text-underline-offset: 8px;
+}
+.landing :focus-visible {
+  outline: 3px solid var(--l-accent);
+  outline-offset: 3px;
+}
+.l-noscroll {
+  scrollbar-width: none;
+}
+.l-noscroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* masked headline */
+.lines .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.lines [data-line] {
+  display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .lines [data-line] {
+    transform: translateY(105%);
+    animation: l-line-up 900ms var(--ease-out) forwards;
+    animation-delay: calc(var(--i) * 110ms + 150ms);
+  }
+  .js [data-after-lines] {
+    opacity: 0;
+    animation: l-fade-up 700ms var(--ease-out) 650ms forwards;
+  }
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out);
+    transition-delay: calc(var(--d, 0) * 80ms);
+  }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+  .l-drift {
+    animation: l-drift 24s ease-in-out infinite alternate;
+  }
+}
+@keyframes l-line-up {
+  to { transform: none; }
+}
+@keyframes l-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes l-drift {
+  from { transform: scale(1.02) translate(0, 0); }
+  to { transform: scale(1.12) translate(-2%, -1.5%); }
+}
+
+/* how-it-works range: a native input over a drawn track */
+.l-range {
+  position: absolute;
+  inset: -12px 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}
+.l-range:focus-visible + .l-thumb-row .l-thumb {
+  outline: 3px solid var(--l-ink);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .l-xfade {
+    animation: l-xfade 200ms ease-out;
+  }
+}
+@keyframes l-xfade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

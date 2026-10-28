@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
+import { Geist, Geist_Mono, Instrument_Serif, Jost } from 'next/font/google'
+import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { themeScript } from '@/components/site-theme'
 import './globals.css'
@@ -7,6 +8,7 @@ import './globals.css'
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist', display: 'swap' })
 const instrument = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-instrument', display: 'swap' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap' })
+const jost = Jost({ subsets: ['latin'], variable: '--font-jost', display: 'swap' })
 
 export const metadata: Metadata = {
   title: { default: 'Curio — small, delightful components', template: '%s · Curio' },
@@ -15,19 +17,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} ${instrument.variable} ${geistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${geist.variable} ${instrument.variable} ${geistMono.variable} ${jost.variable}`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeScript + ";document.documentElement.classList.add('js')" }} />
       </head>
       <body className="min-h-dvh">
         <SiteHeader />
         {children}
-        <footer className="mt-24 border-t" style={{ borderColor: 'var(--site-border)' }}>
-          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-xs sm:flex-row sm:justify-between" style={{ color: 'var(--site-muted)' }}>
-            <span>Curio · a cabinet of small things for the web</span>
-            <span>Made by Kushagra · map tiles © Esri</span>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   )

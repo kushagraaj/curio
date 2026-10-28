@@ -1,12 +1,17 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { SiteTheme } from './site-theme'
 
 export function SiteHeader() {
+  // the landing page draws its own bar
+  if (usePathname() === '/') return null
   return (
     <header className="sticky top-0 z-40 border-b backdrop-blur-md" style={{ borderColor: 'var(--site-border)', background: 'color-mix(in srgb, var(--site-bg) 82%, transparent)' }}>
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
         <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-serif text-[26px] leading-none">curio</span>
+          <span className="font-serif text-[26px] leading-none">curio.</span>
           <span className="hidden font-mono text-[10px] sm:inline" style={{ color: 'var(--site-muted)' }}>
             v0.1
           </span>
