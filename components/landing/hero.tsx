@@ -59,6 +59,19 @@ function Chip({ label, readout, tilt, className = '', children }: { label: strin
   )
 }
 
+// the phone version: label and value on one line, the control under it
+function Mini({ label, readout, children }: { label: string; readout: string; children: React.ReactNode }) {
+  return (
+    <div data-ui className="flex min-w-0 flex-col items-start gap-1.5 rounded-lg px-3 py-2.5 text-left" style={chipVars}>
+      <div className="flex w-full items-baseline justify-between gap-2 text-[13px] leading-none">
+        <span style={{ color: 'var(--l-muted)' }}>{label}</span>
+        <span className="font-medium tabular-nums">{readout}</span>
+      </div>
+      {children}
+    </div>
+  )
+}
+
 export function Hero() {
   const [weight, setWeight] = useState(3)
   const [spacing, setSpacing] = useState(1)
@@ -100,10 +113,27 @@ export function Hero() {
     ),
   }
 
+  const minis = (
+    <div className="mt-10 grid w-full max-w-[400px] grid-cols-2 gap-2 md:hidden">
+      <Mini label="Weight" readout={WEIGHTS[weight].label}>
+        <PillSlider options={WEIGHTS} value={weight} onChange={setWeight} width={120} label="Headline weight" />
+      </Mini>
+      <Mini label="Spacing" readout={SPACING[spacing].label}>
+        <RulerSlider options={SPACING} value={spacing} onChange={setSpacing} width={130} gap={34} label="Letter spacing" />
+      </Mini>
+      <Mini label="Accent" readout={ACCENTS[accent].label}>
+        <SwatchSlider options={ACCENTS} value={accent} onChange={setAccent} label="Accent colour" />
+      </Mini>
+      <Mini label="Theme" readout={dark ? 'Dark' : 'Light'}>
+        <ThemeToggle dark={dark} onChange={setDark} />
+      </Mini>
+    </div>
+  )
+
   return (
     <header className="l-wrap relative flex min-h-[100svh] flex-col pb-16">
       <nav className="flex items-center justify-between gap-6 py-6" aria-label="Main">
-        <Link href="/" className="l-lead font-semibold tracking-[-0.02em]">
+        <Link href="/" className="text-[30px] font-bold leading-none tracking-[-0.04em] md:text-[34px]">
           curio.
         </Link>
         <div className="flex items-center gap-5 sm:gap-7">
@@ -137,8 +167,6 @@ export function Hero() {
           <div className="pointer-events-auto absolute bottom-[4%] right-[4%]">{chips.theme}</div>
         </div>
 
-        <div className="mb-8 flex w-full justify-center md:hidden">{chips.weight}</div>
-
         <h1
           className="lines mx-auto max-w-full uppercase leading-[0.95] transition-[font-weight,letter-spacing] duration-300"
           style={{ fontSize: 'var(--step-display)', fontWeight: WEIGHTS[weight].w, letterSpacing: `${SPACING[spacing].em}em` }}
@@ -170,11 +198,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-10 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center md:hidden">
-          {chips.spacing}
-          {chips.accent}
-          {chips.theme}
-        </div>
+        {minis}
       </div>
     </header>
   )

@@ -40,13 +40,13 @@ export function Drawers() {
       </div>
 
       <div
-        className="relative h-[70svh] min-h-[520px] overflow-hidden md:col-span-7 md:h-[88svh]"
+        className="relative overflow-hidden p-4 md:col-span-7 md:h-[88svh] md:p-0"
         style={{ background: 'var(--l-surface)' }}
       >
         <div
           key={open}
           data-ui
-          className="l-xfade absolute left-4 top-4 w-[min(560px,calc(100%-32px))] rounded-[10px] p-6 md:left-16 md:top-[72px] md:w-[calc(100%-128px)] md:max-w-[560px] md:p-8 2xl:max-w-[1000px]"
+          className="l-xfade relative w-full rounded-[10px] p-5 md:absolute md:left-16 md:top-[72px] md:w-[calc(100%-128px)] md:max-w-[560px] md:p-8 2xl:max-w-[1000px]"
           style={{ background: 'var(--curio-bg)', color: 'var(--curio-fg)' }}
         >
           <div className="flex items-baseline justify-between text-[13px]" style={{ color: 'var(--curio-muted)' }}>
